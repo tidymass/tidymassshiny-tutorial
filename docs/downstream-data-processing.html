@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Tutorials for Tidymass shinyapp</title>
+  <title>Chapter 3 Downstream data processing | Tutorials for Tidymass shinyapp</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Tutorials for Tidymass shinyapp" />
+  <meta property="og:title" content="Chapter 3 Downstream data processing | Tutorials for Tidymass shinyapp" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Tutorials for Tidymass shinyapp" />
+  <meta name="twitter:title" content="Chapter 3 Downstream data processing | Tutorials for Tidymass shinyapp" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -34,8 +34,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="upstream-data-processing.html"/>
+<link rel="prev" href="upstream-data-processing.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -189,68 +189,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Tutorials for Tidymass shinyapp</h1>
+<div id="downstream-data-processing" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Downstream data processing<a href="downstream-data-processing.html#downstream-data-processing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="metabolite-annotation" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Metabolite annotation<a href="downstream-data-processing.html#metabolite-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Metabolite annotation can be performed based on in-house and available open-source databases. To begin with, you need to click <strong>Select MS2 folder</strong> and import prepared MS2 data. These files should be in the format of “.mgf”, and they should be stored separately for negative and positive modes.</p>
+<p><img src="figures/ms2_folder.png" /></p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>column: A character vector specifying the column types. Default is “rp”.</li>
+<li>ms1.ms2.match.mz.tol: Numeric, the m/z tolerance for matching MS1 and MS2. Default is 15.</li>
+<li>ms1.ms2.match.rt.tol: Numeric, the retention time tolerance for matching MS1 and MS2. Default is 30.</li>
+</ul>
+<p>Once you have set the parameters, click <strong>Start</strong> to import MS2 data.</p>
+<p><img src="figures/metabolite_annotation.png" /></p>
+<p>Next, you can choose suitable parameters for metabolite annotation.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>ms1.match.ppm: A numeric value specifying the mass accuracy threshold for MS1 matching in parts per million (ppm). Defaults to 25.</li>
+<li>ms2.match.ppm: A numeric value specifying the mass accuracy threshold for MS2 (Fragment ion) matching in ppm. Defaults to 30.</li>
+<li>rt.match.tol: A numeric value specifying the retention time matching tolerance in seconds. Defaults to 30.</li>
+<li>candidate.num: A numeric value specifying the number of top candidates to retain per feature. Defaults to 3.</li>
+<li>column: A character string specifying the chromatographic column type, either “rp” (reverse phase) or “hilic”. Defaults to “rp”.</li>
+<li>threads: An integer specifying the number of threads to use for parallel processing. Defaults to 3.</li>
+</ul>
+<p>We need necessary MS2 databases for metabolite annotation, and here we provide some common in-house databases such as Mona, Massbank and HMDB.</p>
+<p>More MS2 compound databases can be downloaded from <a href="https://www.tidymass.org/databases/" target="_blank">Tidymass Website</a>. After the download is complete, place them in a new folder and click <strong>Choose folder</strong>.</p>
+<p>Click <strong>Start annotation</strong> to begin the job (The job will start about 10s after you click the button, don’t click again!).</p>
+<p><img src="figures/metabolite_annotation2.png" /></p>
 </div>
-<div id="installation" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Installation<a href="index.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><a href="https://github.com/tidymass/tidymass_shiny" target="_blank">Tidymass shinyapp</a> is a user-friendly web application for <a href="https://www.tidymass.org/" target="_blank">Tidymass</a> that requires little or no programming experience.</p>
-<p>The app can only be installed via code now, and we will introduce how to do that step by step in this chapter.</p>
-<div id="install-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Install R and Rstudio<a href="index.html#install-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To begin with, you need to install R and Rstudio, both of which can be free downloaded from official websites.</p>
-<p>If you have installed them before, please ensure that R version &gt; 4.1 as tidymass required, ohterwise download and install the <a href="https://cran.r-project.org/mirrors.html" target="_blank">latest version of R</a>.</p>
-<p><strong>Install R</strong></p>
-<p>Download <a href="https://www.r-project.org/" target="_blank">R</a> and install it.</p>
-<p><img src="figures/R_install.png" /></p>
-<p><strong>Install Rstudio</strong></p>
-<p>Download <a href="https://posit.co/download/rstudio-desktop/#download" target="_blank">Rstudio</a> and install it.</p>
-<p><img src="figures/Rstudio_install.png" /></p>
-<p><strong>Open the Rstudio</strong></p>
-<p><img src="figures/Rstudio.png" /></p>
+<div id="annotation-filtering" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Annotation filtering<a href="downstream-data-processing.html#annotation-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The annotation results are assigned conﬁdence levels according to MSI (in-house database, level 1; public MS2 database, level 2; MS1 database, level 3).</p>
+<p>After obtaining annotation results, you can choose how to keep multiple annotations, how to remove redundancy and how to keep annotation levels.</p>
+<p>Click <strong>Adduct for level 3 annotation</strong> and select suitable models and methods, then click <strong>START</strong> to perform annotation filtering.</p>
+<p><img src="figures/annotation_filtering.png" /></p>
 </div>
-<div id="for-mac-user-install-cario" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> (For Mac User) Install Cario<a href="index.html#for-mac-user-install-cario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Cairo is a 2D graphics library used by R for high-quality plots and needed for Tidymass Shinyapp. On macOS, it requires the X11 system, which is not installed by default. You can follow the following steps if you haven’t install Cairo.</p>
-<p>First, visit the official website of <a href="https://www.xquartz.org/" target="_blank">XQuartz</a> and install it, and this will restart your computer.</p>
-<p><img src="figures/Cairo.png" /></p>
-<p>Next, you can install <strong>Cairo</strong> by running the code in Rstudio:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Cairo&quot;</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span></code></pre></div>
-<p>If the installation is successful, you should be able to library it:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(Cairo)</span></code></pre></div>
+<div id="metabolites-origin" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Metabolites origin<a href="downstream-data-processing.html#metabolites-origin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="install-tidymass-shinyapp" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Install Tidymass shinyapp<a href="index.html#install-tidymass-shinyapp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Here we provide three different methods to install tidymass shinyapp: <strong>R</strong>, <strong>Docker</strong> and <strong>Server</strong>.</p>
-<p><strong>Install with R</strong></p>
-<p>First, you are recommended to install <strong>Tidymass</strong> with the following code. For more information and guidance, please refer to <a href="https://www.tidymass.org/" target="_blank">Tidymass Website</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&quot;tidymass/tidymass&quot;</span>)</span></code></pre></div>
-<p>Second, install the necessary packages:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;remotes&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;remotes&#39;</span>);</span>
-<span id="cb4-2"><a href="index.html#cb4-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;tidyverse&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>);</span>
-<span id="cb4-3"><a href="index.html#cb4-3" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;writexl&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;writexl&quot;</span>);</span>
-<span id="cb4-4"><a href="index.html#cb4-4" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;hexbin&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;hexbin&#39;</span>)</span>
-<span id="cb4-5"><a href="index.html#cb4-5" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;ComplexUpset&#39;</span>))<span class="fu">install.packages</span>(<span class="st">&#39;ComplexUpset&#39;</span>);</span>
-<span id="cb4-6"><a href="index.html#cb4-6" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;shinyalert&#39;</span>))<span class="fu">install.packages</span>(<span class="st">&#39;shinyalert&#39;</span>);</span>
-<span id="cb4-7"><a href="index.html#cb4-7" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;shinyFiles&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;thomasp85/shinyFiles&#39;</span>);</span>
-<span id="cb4-8"><a href="index.html#cb4-8" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;shinyWidgets&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;dreamRs/shinyWidgets&quot;</span>);</span>
-<span id="cb4-9"><a href="index.html#cb4-9" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;shiny&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;shiny&#39;</span>);</span>
-<span id="cb4-10"><a href="index.html#cb4-10" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;bsicons&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;bsicons&#39;</span>);</span>
-<span id="cb4-11"><a href="index.html#cb4-11" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;bslib&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;bslib&#39;</span>);</span>
-<span id="cb4-12"><a href="index.html#cb4-12" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;plotly&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;plotly&#39;</span>);</span>
-<span id="cb4-13"><a href="index.html#cb4-13" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;colourpicker&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;colourpicker&#39;</span>);</span>
-<span id="cb4-14"><a href="index.html#cb4-14" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;massdbbuildin&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/massdbbuildin&#39;</span>)</span></code></pre></div>
-<p>Finally, install Tidymass shinyapp with the code:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/tidymass_shiny&#39;</span>)</span></code></pre></div>
-<p>To start the Tidymass shinyapp:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-2"><a href="index.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(tidymass)</span>
-<span id="cb6-3"><a href="index.html#cb6-3" tabindex="-1"></a><span class="fu">library</span>(tidymassshiny)</span>
-<span id="cb6-4"><a href="index.html#cb6-4" tabindex="-1"></a><span class="fu">run_tidymass_shiny</span>()</span></code></pre></div>
-<p>You should be able to see:</p>
-<p><img src="figures/shinyapp.png" /></p>
-<p><strong>Install with Docker</strong></p>
-<p><strong>Install with Server</strong></p>
+<div id="differential-accumulated-metabolites-dam" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Differential Accumulated Metabolites (DAM)<a href="downstream-data-processing.html#differential-accumulated-metabolites-dam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="enrichment" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Enrichment<a href="downstream-data-processing.html#enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="feature-based-pathway-analysis-fpa" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Feature-based Pathway Analysis (FPA)<a href="downstream-data-processing.html#feature-based-pathway-analysis-fpa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -259,8 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="upstream-data-processing.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="upstream-data-processing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -291,7 +276,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-install.Rmd",
     "text": "Edit"
   },
   "history": {
