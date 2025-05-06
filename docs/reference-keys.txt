@@ -15,5 +15,6 @@ annotation-filtering
 metabolites-origin
 differential-accumulated-metabolites-dam
 enrichment
+tidymass-shiny-toolkits
 feature-based-pathway-analysis-fpa
-references
+metabolite-database-construction

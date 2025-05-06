@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 References | Tutorials for Tidymass shinyapp</title>
+  <title>4 Tidymass shiny Toolkits | Tutorials for Tidymass shinyapp</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 References | Tutorials for Tidymass shinyapp" />
+  <meta property="og:title" content="4 Tidymass shiny Toolkits | Tutorials for Tidymass shinyapp" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 References | Tutorials for Tidymass shinyapp" />
+  <meta name="twitter:title" content="4 Tidymass shiny Toolkits | Tutorials for Tidymass shinyapp" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -166,9 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#metabolites-origin"><i class="fa fa-check"></i><b>3.3</b> Metabolites origin</a></li>
 <li class="chapter" data-level="3.4" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#differential-accumulated-metabolites-dam"><i class="fa fa-check"></i><b>3.4</b> Differential Accumulated Metabolites (DAM)</a></li>
 <li class="chapter" data-level="3.5" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#enrichment"><i class="fa fa-check"></i><b>3.5</b> Enrichment</a></li>
-<li class="chapter" data-level="3.6" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>3.6</b> Feature-based Pathway Analysis (FPA)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+<li class="chapter" data-level="4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html"><i class="fa fa-check"></i><b>4</b> Tidymass shiny Toolkits</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.1</b> Feature-based Pathway Analysis (FPA)</a></li>
+<li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.2</b> Metabolite database construction</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -189,14 +192,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tidymass-shiny-toolkits" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Tidymass shiny Toolkits<a href="tidymass-shiny-toolkits.html#tidymass-shiny-toolkits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="feature-based-pathway-analysis-fpa" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Feature-based Pathway Analysis (FPA)<a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The metabolic feature-based functional module analysis approach can significantly expands biological interpretation beyond MS2 spectra-based annotated metabolites. You may refer to <a href="https://www.tidymass.org/docs/" target="_blank">Tidymass Website</a> for detailed documentation.</p>
+</div>
+<div id="metabolite-database-construction" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Metabolite database construction<a href="tidymass-shiny-toolkits.html#metabolite-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using the <a href="https://metid.tidymass.org/" target="_blank">MetID</a> package.</p>
+<p>There are no specific requirements on how to run the LC/MS data for users. As the in-house database construction in metid is used for users to get the in-house databases for themselves (including m/z, retention time and MS/MS spectra of metabolites, for level 1 annotation (Sumner et al., 2007)), so the users just need to run the standards using the same column, LC-gradient, and MS settings with their real samples in the lab</p>
+<p><strong>Data preparation</strong></p>
+<p>In Tidymass shinyapp, we provide a dedicated module for in-house database construction. To prepare your workflow, please follow the comprehensive step-by-step instructions available at:<br />
+<a href="https://metid.tidymass.org/articles/database_construction" target="_blank">https://metid.tidymass.org/articles/database_construction</a></p>
+<p><strong>Construct in-house database with MS2 spectra</strong></p>
 <ol style="list-style-type: decimal">
-<li>Shen, X., Yan, H., Wang, C. et al. TidyMass an object-oriented reproducible analysis framework for LC–MS data. Nat Commun 13, 4365 (2022). <a href="https://doi.org/10.1038/s41467-022-32155-w" class="uri">https://doi.org/10.1038/s41467-022-32155-w</a></li>
-<li><a href="https://www.tidymass.org/" class="uri">https://www.tidymass.org/</a></li>
-<li><a href="https://github.com/tidymass/tidymass_shiny" class="uri">https://github.com/tidymass/tidymass_shiny</a></li>
+<li><strong>Selec input file</strong>
+<ul>
+<li>Click the File Path button</li>
+<li>Select a CSV-formatted file containing metabolite metadata.</li>
+</ul></li>
 </ol>
+<p><img src="figures/1.png" />
+2. <strong>Configure Database Parameters</strong>
+- Navigate to the <strong>Construction Parameters</strong> tab
+- Review and adjust database-specific details
+- Click the <strong>Build Database</strong> button to initiate the process</p>
+<p><img src="figures/2.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Result Verification &amp; Database Export</strong>
+<ul>
+<li>Spectral information will be displayed in the main interface (verify key metadata like m/z values and retention times)</li>
+<li>Assign a unique identifier to your custom database (eg: “demo_inhouse_database”)</li>
+<li>Click <strong>Download Database</strong> to save the compiled database to your local system</li>
+</ul></li>
+</ol>
+<p><img src="figures/3.png" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Workflow Execution:</strong>
+<ul>
+<li>Place the downloaded database file (.rda, R Data format) into a dedicated empty directory</li>
+<li>During the <strong>Metabolite Annotation</strong> phase of the workflow:<br />
+‣ Click <strong>Choose Folder</strong><br />
+‣ Navigate to the directory containing your custom database</li>
+<li>Initiate the annotation process by clicking the <strong>Start Annotation</strong> button</li>
+</ul></li>
+</ol>
+<p><img src="figures/4.png" />
+<img src="figures/5.png" /></p>
 
+</div>
 </div>
             </section>
 

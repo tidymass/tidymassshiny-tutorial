@@ -35,7 +35,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   
   
 <link rel="prev" href="upstream-data-processing.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="tidymass-shiny-toolkits.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -166,9 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#metabolites-origin"><i class="fa fa-check"></i><b>3.3</b> Metabolites origin</a></li>
 <li class="chapter" data-level="3.4" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#differential-accumulated-metabolites-dam"><i class="fa fa-check"></i><b>3.4</b> Differential Accumulated Metabolites (DAM)</a></li>
 <li class="chapter" data-level="3.5" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#enrichment"><i class="fa fa-check"></i><b>3.5</b> Enrichment</a></li>
-<li class="chapter" data-level="3.6" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>3.6</b> Feature-based Pathway Analysis (FPA)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+<li class="chapter" data-level="4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html"><i class="fa fa-check"></i><b>4</b> Tidymass shiny Toolkits</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.1</b> Feature-based Pathway Analysis (FPA)</a></li>
+<li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.2</b> Metabolite database construction</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -227,16 +230,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="metabolites-origin" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Metabolites origin<a href="downstream-data-processing.html#metabolites-origin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>testsadfs</p>
+<p>The metabolites origin module can help us determine the origin of annotated metabolites.</p>
+<p>First, you need to click “Check database” and then you can click “Start” to perform the analysis.</p>
+<p><img src="figures/origin_analysis.png" /></p>
+<p>You will see the Upset plot on the right, which demonstrates the overall distribution of origins and their intersection for all the compounds.</p>
+<p>If you are interested in the origin of a compounds you can select it and click <strong>Show network plot</strong>.</p>
+<p><img src="figures/origins_com.png" /></p>
+<p>Here you can also see the visualized result (need to scroll down).</p>
+<p><img src="figures/origins_visual.png" /></p>
 </div>
 <div id="differential-accumulated-metabolites-dam" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Differential Accumulated Metabolites (DAM)<a href="downstream-data-processing.html#differential-accumulated-metabolites-dam" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To begin with, click <strong>Wake up object</strong> to wake up the massdataset object.</p>
+<p>You need to select the sample attribute and here we use group as an example. Then set the second group as Control and click Start. The corresponding PCA plot and Volcano plot will be illustrated on the right. You can set parameters like **Log2(FoldChange*)<strong>, </strong>P-value<strong> (cutoff based on p-value) and </strong>FDR** (cutoff based on Adjusted p-value).</p>
+<p><img src="figures/dam.png" /></p>
 </div>
 <div id="enrichment" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Enrichment<a href="downstream-data-processing.html#enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="feature-based-pathway-analysis-fpa" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Feature-based Pathway Analysis (FPA)<a href="downstream-data-processing.html#feature-based-pathway-analysis-fpa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Two types of pathway data are provided: KEGG pathway and HMDB pathway. You may also choose to upload the custom database by clicking Upload custom database.</p>
+<p>Here you can set the p value adjust methods and p-value cutoff. You may also change the threads to accelerate the job.</p>
+<p><strong>Barplot</strong> and <strong>Enrich scatter plot</strong> are provided to show the pathway enrichment.</p>
+<p><img src="figures/enrichment.png" /></p>
 
 </div>
 </div>
@@ -246,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="upstream-data-processing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidymass-shiny-toolkits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

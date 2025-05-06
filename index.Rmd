@@ -63,10 +63,6 @@ library(Cairo)
 
 ## Install Tidymass shinyapp
 
-Here we provide three different methods to install tidymass shinyapp: **R**, **Docker** and **Server**.
-
-**Install with R**
-
 First, you are recommended to install **Tidymass** with the following code. For more information and guidance, please refer to [Tidymass Website](https://www.tidymass.org/){target="_blank"}
 
 ```{r, eval=FALSE}
@@ -112,10 +108,6 @@ You should be able to see:
 
 ![](figures/shinyapp.png)
 
-**Install with Docker**
-
-
-**Install with Server**
 
 
 
