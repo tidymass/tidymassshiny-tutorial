@@ -4,7 +4,6 @@ for-mac-user-install-cario
 install-tidymass-shinyapp
 upstream-data-processing
 data-format-converter
-methods-to-upload-the-files
 project-initiate
 data-import
 data-quality-assessment
@@ -18,3 +17,5 @@ enrichment
 tidymass-shiny-toolkits
 feature-based-pathway-analysis-fpa
 metabolite-database-construction
+kegg-pathway-database-construction
+metabolite-id-conversion

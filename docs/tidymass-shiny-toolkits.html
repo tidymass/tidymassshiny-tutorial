@@ -153,11 +153,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html"><i class="fa fa-check"></i><b>2</b> Upstream data processing</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-format-converter"><i class="fa fa-check"></i><b>2.1</b> Data format converter</a></li>
-<li class="chapter" data-level="2.2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#methods-to-upload-the-files"><i class="fa fa-check"></i><b>2.2</b> Methods to upload the files</a></li>
-<li class="chapter" data-level="2.3" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#project-initiate"><i class="fa fa-check"></i><b>2.3</b> Project initiate</a></li>
-<li class="chapter" data-level="2.4" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-import"><i class="fa fa-check"></i><b>2.4</b> Data import</a></li>
-<li class="chapter" data-level="2.5" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-quality-assessment"><i class="fa fa-check"></i><b>2.5</b> Data quality assessment</a></li>
-<li class="chapter" data-level="2.6" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-cleaning"><i class="fa fa-check"></i><b>2.6</b> Data cleaning</a></li>
+<li class="chapter" data-level="2.2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#project-initiate"><i class="fa fa-check"></i><b>2.2</b> Project initiate</a></li>
+<li class="chapter" data-level="2.3" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-import"><i class="fa fa-check"></i><b>2.3</b> Data import</a></li>
+<li class="chapter" data-level="2.4" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-quality-assessment"><i class="fa fa-check"></i><b>2.4</b> Data quality assessment</a></li>
+<li class="chapter" data-level="2.5" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-cleaning"><i class="fa fa-check"></i><b>2.5</b> Data cleaning</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html"><i class="fa fa-check"></i><b>3</b> Downstream data processing</a>
 <ul>
@@ -171,6 +170,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.1</b> Feature-based Pathway Analysis (FPA)</a></li>
 <li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.2</b> Metabolite database construction</a></li>
+<li class="chapter" data-level="4.3" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction"><i class="fa fa-check"></i><b>4.3</b> KEGG Pathway Database Construction</a></li>
+<li class="chapter" data-level="4.4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-id-conversion"><i class="fa fa-check"></i><b>4.4</b> Metabolite ID Conversion</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -240,6 +241,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p><img src="figures/4.png" />
 <img src="figures/5.png" /></p>
+</div>
+<div id="kegg-pathway-database-construction" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> KEGG Pathway Database Construction<a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When the research subject is not human, constructing a species-specific KEGG pathway database becomes essential for conducting enrichment analysis. The KEGG database contains comprehensive metabolic pathway data for various organisms, including 1,169 eukaryotes, 9,208 bacteria, and 449 archaea (refer to <a href="https://www.genome.jp/kegg/tables/br08606.html" target="_blank">KEGG Organisms List</a>). Researchers should first identify their target species’ organism code (e.g., <code>hsa</code> for <em>Homo sapiens</em>, <code>mmu</code> for <em>Mus musculus</em>, <code>ath</code> for <em>Arabidopsis thaliana</em>) from this resource.</p>
+<p>The tidymass shiny provides a dedicated module for constructing species-specific pathway databases using these organism codes. The generated pathway database can subsequently be applied to metabolite KEGG pathway enrichment analysis through either the tidymass shiny interface or tidymass R programming.</p>
+<p><strong>Operational Workflow</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Directory Preparation</strong></p>
+<p>Create a dedicated working directory (e.g., <code>kegg_pathway_db</code>). Navigate to the <code>KEGG Pathway Database Construction</code> tool under the <code>Tidymass Shiny Toolkits</code> dropdown menu in the tidymass shiny interface.</p></li>
+<li><p><strong>Workspace Configuration</strong></p>
+<ul>
+<li>Click <code>Set working directory</code> in the sidebar’s <em>Data Input</em> section</li>
+<li>Select the newly created <code>kegg_pathway_db</code> directory
+<img src="figures/a1.png" /></li>
+</ul></li>
+<li><p><strong>Parameter Settings</strong></p>
+<p>Under the <em>Parameters</em> section:</p>
+<ul>
+<li>Enter the target organism code (case-sensitive)</li>
+<li>Set sleep time between 1-1.5 seconds (minimum 1s to prevent server overload)</li>
+<li>Initiate download by clicking <code>Download pathway</code></li>
+</ul></li>
+<li><p><strong>Execution Monitoring</strong></p>
+<ul>
+<li>A progress bar will appear in the lower-right interface</li>
+<li>Real-time KEGG pathway data retrieval requires stable internet connectivity</li>
+<li>If interruptions occur:
+<ul>
+<li>Verify network connection</li>
+<li>Consider increasing sleep interval
+<img src="figures/a2.png" /></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Completion Verification</strong></p>
+<p>Upon successful database construction:</p>
+<ul>
+<li>The main interface displays execution logs</li>
+<li>File paths of generated databases are explicitly shown
+<img src="figures/a3.png" /></li>
+</ul></li>
+</ol>
+<p>This automated process ensures reproducible creation of organism-specific KEGG pathway resources while maintaining compliance with KEGG server access protocols.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Use your pathway database in KEGG enrichment analysis</strong></li>
+</ol>
+<p>In the annotation results, you will find that Pathway IDs adopt the organism code (e.g., dme) from your custom database as their prefix. This confirms that your provided database was successfully utilized during the KEGG enrichment analysis.</p>
+<p><img src="figures/a4.png" /></p>
+</div>
+<div id="metabolite-id-conversion" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Metabolite ID Conversion<a href="tidymass-shiny-toolkits.html#metabolite-id-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Metabolites often possess distinct identifiers across analytical databases, necessitating cross-platform ID translation. Tidymass Shiny offers integrated solutions for this purpose:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Established Services</strong></p>
+<ul>
+<li><a href="https://cts.fiehnlab.ucdavis.edu/" target="_blank">CTS - Chemical Translation Service</a> by Fiehn Lab</li>
+<li><a href="https://www.chemspider.com/" target="_blank">ChemSpider</a> chemical structure resolver</li>
+</ul></li>
+<li><p><strong>Experimental AI-Powered Conversion</strong></p>
+<ul>
+<li>Utilizes OpenAI’s language models (<em>caution: non-finetuned LLMs may generate unreliable outputs; use judiciously</em>)</li>
+</ul></li>
+</ol>
+<p><strong>API Requirements</strong></p>
+<ul>
+<li>ChemSpider: <a href="https://developer.rsc.org/getting-started" target="_blank">Register API key</a></li>
+<li>OpenAI: <a href="https://platform.openai.com/api-keys" target="_blank">Obtain API credentials</a></li>
+</ul>
+<hr />
+<p><strong>Operational Protocol</strong></p>
+<p>Step 1: <strong>Platform Selection</strong></p>
+<ul>
+<li>Under <em>Convert Parameters</em>, choose a translation service</li>
+</ul>
+<p>Step 2: <strong>Input Configuration</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Source Identification</strong></p>
+<ul>
+<li>Enter query term in <em>Source ID Type</em> (autocompletion suggests compatible databases)</li>
+<li>Example: Select <em>Chemical Name</em></li>
+</ul></li>
+<li><p><strong>Target Specification</strong></p>
+<ul>
+<li>Choose output format in <em>Target ID Type</em> (e.g., HMDB ID)</li>
+</ul></li>
+</ol>
+<p>Step 3: <strong>Execution</strong></p>
+<ul>
+<li>Input compound identifiers in <em>Conversion Input</em></li>
+<li>Click <code>Convert ID</code></li>
+</ul>
+<p>Step 4: <strong>Output Retrieval</strong></p>
+<ul>
+<li>Translated IDs display in tabular/JSON format after computational latency</li>
+<li>Failed mappings highlight discrepancies for manual verification</li>
+</ul>
+<p><img src="figures/convert.gif" /></p>
 
 </div>
 </div>

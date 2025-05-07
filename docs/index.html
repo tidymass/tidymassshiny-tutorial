@@ -153,11 +153,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html"><i class="fa fa-check"></i><b>2</b> Upstream data processing</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-format-converter"><i class="fa fa-check"></i><b>2.1</b> Data format converter</a></li>
-<li class="chapter" data-level="2.2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#methods-to-upload-the-files"><i class="fa fa-check"></i><b>2.2</b> Methods to upload the files</a></li>
-<li class="chapter" data-level="2.3" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#project-initiate"><i class="fa fa-check"></i><b>2.3</b> Project initiate</a></li>
-<li class="chapter" data-level="2.4" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-import"><i class="fa fa-check"></i><b>2.4</b> Data import</a></li>
-<li class="chapter" data-level="2.5" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-quality-assessment"><i class="fa fa-check"></i><b>2.5</b> Data quality assessment</a></li>
-<li class="chapter" data-level="2.6" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-cleaning"><i class="fa fa-check"></i><b>2.6</b> Data cleaning</a></li>
+<li class="chapter" data-level="2.2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#project-initiate"><i class="fa fa-check"></i><b>2.2</b> Project initiate</a></li>
+<li class="chapter" data-level="2.3" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-import"><i class="fa fa-check"></i><b>2.3</b> Data import</a></li>
+<li class="chapter" data-level="2.4" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-quality-assessment"><i class="fa fa-check"></i><b>2.4</b> Data quality assessment</a></li>
+<li class="chapter" data-level="2.5" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html#data-cleaning"><i class="fa fa-check"></i><b>2.5</b> Data cleaning</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="downstream-data-processing.html"><a href="downstream-data-processing.html"><i class="fa fa-check"></i><b>3</b> Downstream data processing</a>
 <ul>
@@ -171,6 +170,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.1</b> Feature-based Pathway Analysis (FPA)</a></li>
 <li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.2</b> Metabolite database construction</a></li>
+<li class="chapter" data-level="4.3" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction"><i class="fa fa-check"></i><b>4.3</b> KEGG Pathway Database Construction</a></li>
+<li class="chapter" data-level="4.4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-id-conversion"><i class="fa fa-check"></i><b>4.4</b> Metabolite ID Conversion</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -240,7 +241,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-11"><a href="index.html#cb4-11" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;bslib&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;bslib&#39;</span>);</span>
 <span id="cb4-12"><a href="index.html#cb4-12" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;plotly&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;plotly&#39;</span>);</span>
 <span id="cb4-13"><a href="index.html#cb4-13" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;colourpicker&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;colourpicker&#39;</span>);</span>
-<span id="cb4-14"><a href="index.html#cb4-14" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;massdbbuildin&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/massdbbuildin&#39;</span>)</span></code></pre></div>
+<span id="cb4-14"><a href="index.html#cb4-14" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;massdbbuildin&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/massdbbuildin&#39;</span>) </span>
+<span id="cb4-15"><a href="index.html#cb4-15" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;massdatabase&#39;</span>)) remotes<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&quot;jaspershen/massdatabase&quot;</span>)</span></code></pre></div>
 <p>Finally, install Tidymass shinyapp with the code:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/tidymass_shiny&#39;</span>)</span></code></pre></div>
 <p>To start the Tidymass shinyapp:</p>

@@ -55,7 +55,7 @@ First, you need to click "Check database" and then you can click "Start" to perf
 
 You will see the Upset plot on the right, which demonstrates the overall distribution of origins and their intersection for all the compounds.
 
-If you are interested in the origin of a compounds you can select it and click **Show network plot**. 
+If you are interested in the origin of a specific compound you can select the **corresponding row** and click **Show network plot**. 
 
 ![](figures/origins_com.png)
 
@@ -68,7 +68,7 @@ Here you can also see the visualized result (need to scroll down).
 
 To begin with, click **Wake up object** to wake up the massdataset object.
 
-You need to select the sample attribute and here we use group as an example. Then set the second group as Control and click Start. The corresponding PCA plot and Volcano plot will be illustrated on the right. You can set parameters like **Log2(FoldChange)**, **P-value** (cutoff based on p-value) and **FDR** (cutoff based on Adjusted p-value).
+You need to select the sample attribute and here we use group as an example. Then **set the second group as Control** and click Start. The corresponding PCA plot and Volcano plot will be illustrated on the right. You can set parameters like **Log2(FoldChange)**, **P-value** (cutoff based on p-value) and **FDR** (cutoff based on Adjusted p-value).
 
 ![](figures/dam.png)
 

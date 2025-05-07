@@ -85,7 +85,9 @@ if (!require('bsicons')) install.packages('bsicons');
 if (!require('bslib')) install.packages('bslib');
 if (!require('plotly')) install.packages('plotly');
 if (!require('colourpicker')) install.packages('colourpicker');
-if (!require('massdbbuildin')) remotes::install_github('tidymass/massdbbuildin')
+if (!require('massdbbuildin')) remotes::install_github('tidymass/massdbbuildin') 
+if (!require('massdatabase')) remotes::install_gitlab("jaspershen/massdatabase")
+  
 ```
 
 Finally, install Tidymass shinyapp with the code:
