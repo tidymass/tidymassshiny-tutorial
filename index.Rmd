@@ -196,7 +196,7 @@ Ensure the system has the necessary libraries for R package compilation and Shin
 sudo apt update
 ```
 
-- **Install the libraries**:
+-**Install the libraries**:
 
 ```{r, eval=FALSE}
 sudo apt install -y gfortran libcurl4-openssl-dev libssh2-1-dev libgit2-dev libpng-dev libjpeg-dev libtiff-dev libcairo2-dev libharfbuzz-dev libfribidi-dev zlib1g-dev libbz2-dev liblzma-dev libnetcdf-dev libxml2-dev libjson-c-dev libssl-dev libfontconfig1-dev libfreetype6-dev libicu-dev libhdf5-dev
@@ -206,13 +206,13 @@ sudo apt install -y gfortran libcurl4-openssl-dev libssh2-1-dev libgit2-dev libp
 
 To isolate the Shiny application and manage permissions effectively, create a dedicated user.
 
-- **Create the `shiny` user**:
+-**Create the `shiny` user**:
 
 ```{r, eval=FALSE}
 sudo adduser shiny
 ```
 
-- **Switch to the `shiny` user**:
+-**Switch to the `shiny` user**:
 
 ```{r, eval=FALSE}
 su - shiny
@@ -287,8 +287,9 @@ Install the R packages needed for your Shiny application.
 R
 ```            
     
-- **For Chinese users: 
-- **Set package mirrors** (optional, for faster downloads):
+**For Chinese users**:
+
+-**Set package mirrors** (optional, for faster downloads):
 
 ```{r, eval=FALSE}
 options(repos = c(CRAN = 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/'))
@@ -337,11 +338,12 @@ sudo systemctl restart shiny-server
 ```          
 
 -**Test the app**:  
-    Open a browser and go to `http://your-server-ip:3838/tidymass_shiny`.
+
+Open a browser and go to `http://your-server-ip:3838/tidymass_shiny`.
 
 ![](figures/b1.png)
 
-**Notice
+**Notice**
 
 It is important to note that `tidymass_shiny` utilizes the `shinyFiles` package, which is inherently a local file management system. Theoretically, `shinyFiles` cannot directly access local files. This means you must first create a working directory under your user account on the server and upload the raw data to be analyzed (e.g., via SFTP) to this server directory before proceeding.
 
