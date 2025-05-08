@@ -149,6 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Install R and Rstudio</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#for-mac-user-install-cario"><i class="fa fa-check"></i><b>1.2</b> (For Mac User) Install Cario</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#install-tidymass-shinyapp"><i class="fa fa-check"></i><b>1.3</b> Install Tidymass shinyapp</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#install-docker-version"><i class="fa fa-check"></i><b>1.4</b> Install docker version</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html"><i class="fa fa-check"></i><b>2</b> Upstream data processing</a>
 <ul>
@@ -199,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="installation" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Installation<a href="index.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><a href="https://github.com/tidymass/tidymass_shiny" target="_blank">Tidymass shinyapp</a> is a user-friendly web application for <a href="https://www.tidymass.org/" target="_blank">Tidymass</a> that requires little or no programming experience.</p>
-<p>The app can only be installed via code now, and we will introduce how to do that step by step in this chapter.</p>
+<p>The app can be installed via code, docker and server, and we will introduce how to do that step by step in this chapter.</p>
 <div id="install-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Install R and Rstudio<a href="index.html#install-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To begin with, you need to install R and Rstudio, both of which can be free downloaded from official websites.</p>
@@ -252,6 +253,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-4"><a href="index.html#cb6-4" tabindex="-1"></a><span class="fu">run_tidymass_shiny</span>()</span></code></pre></div>
 <p>You should be able to see:</p>
 <p><img src="figures/shinyapp.png" /></p>
+</div>
+<div id="install-docker-version" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Install docker version<a href="index.html#install-docker-version" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.docker.com/" target="_blank">Docker</a>, a group of platform as a service (PaaS) products, uses OS-level virtualization to provide software in containers. It’s useful for individuals who want to share the code, data, and analysis environment with others to repeat their analysis and results.</p>
+<p>We provide a docker version of tidymass shinyapp, all the packages in tidymass shinyapp and the dependent packages have been installed.</p>
+<p><strong>Install docker</strong></p>
+<p>You can refer the the <a href="https://www.docker.com/get-started" target="_blank">official website</a> to download the docker. Then run docker.</p>
+<p><strong>Pull the tidymassshiny image</strong></p>
+<p>Open your terminal (on Windows, use Command Prompt, PowerShell, or Windows Terminal) and type the following command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a>docker pull tidymass<span class="sc">/</span>tidymassshiny<span class="sc">:</span>latest</span></code></pre></div>
+<p><strong>Get the path of the demo data</strong></p>
+<p>Since the Shiny app utilizes <code>shinyFiles</code> to obtain file or folder paths, you need to mount your <strong>working directory</strong> into the Docker image when running the Docker version of <code>tidymassshiny</code>. Here are instructions.</p>
+<p>For macOS systems, you can get the path for the demo data from <code>Get Info</code>, the path may look like <code>/Users/yijiang/Desktop/Demo_data</code>. For Windows OS, the path may look like <code>C:\Users\Yijiang\Documents</code>. Here you need to copy <strong>Your Own Path</strong>.</p>
+<p><img src="figures/path.png" /></p>
+<p><strong>Ensure Docker Desktop has permission to demo data</strong></p>
+<p>Ensure Docker Desktop has permission to access the drive containing your working directory:</p>
+<ol style="list-style-type: decimal">
+<li>Open <strong>Docker Desktop</strong>.</li>
+<li>Go to <strong>Settings &gt; Resources &gt; File Sharing</strong>.</li>
+<li>Add the drive or folder (e.g., <code>/Users/yijiang/Desktop/Demo_data</code>) to the shared folders list.</li>
+<li>Click <strong>Apply &amp; Restart</strong>.</li>
+</ol>
+<p><img src="figures/docker_set.png" /></p>
+<p>Please make sure the demo file has the required permissions before proceeding to the next steps. Here are some guidance for <a href="https://support.apple.com/en-sg/guide/mac-help/mchlp1203/mac" target="_blank">Mac</a> and <a href="https://answers.microsoft.com/en-us/windows/forum/all/give-permissions-to-files-and-folders-in-windows/78ee562c-a21f-4a32-8691-73aac1415373" target="_blank">Windows</a>.</p>
+<p>Here replace <code>/Users/yijiang/Desktop/Demo_data</code> with <strong>your own path</strong> that you just give permission to the Docker Desktop.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a>docker run <span class="sc">-</span>p <span class="dv">3838</span><span class="sc">:</span><span class="dv">3838</span> <span class="sc">-</span>v <span class="sc">/</span>Users<span class="sc">/</span>yijiang<span class="sc">/</span>Desktop<span class="sc">/</span>Demo_data<span class="sc">:</span><span class="er">/</span>home tidymass<span class="sc">/</span>tidymassshiny<span class="sc">:</span>latest</span></code></pre></div>
+<p>This command achieves two purposes:
+- Starts the Docker image.
+- Mounts your working directory to the <code>/home</code> path within the container.</p>
+<p><strong>Running the Application</strong></p>
+<p>In terminal, a series of R package loading information will be printed. Until you see the prompt below, tidymassshiny has been successfully running：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">3.3</span> (<span class="dv">2024-02-29</span>) <span class="sc">--</span> <span class="st">&quot;Angel Food Cake&quot;</span></span>
+<span id="cb9-2"><a href="index.html#cb9-2" tabindex="-1"></a>...</span>
+<span id="cb9-3"><a href="index.html#cb9-3" tabindex="-1"></a>...</span>
+<span id="cb9-4"><a href="index.html#cb9-4" tabindex="-1"></a>...</span>
+<span id="cb9-5"><a href="index.html#cb9-5" tabindex="-1"></a><span class="do">## Until this message show up.</span></span>
+<span id="cb9-6"><a href="index.html#cb9-6" tabindex="-1"></a>Listening on http<span class="sc">:</span><span class="er">//</span><span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.0</span><span class="sc">:</span><span class="dv">3838</span></span></code></pre></div>
+<p>Then open the browser (Google，Firefox，Edge or Safari), paste the address <code>http://localhost:3838</code> in the address bar, and the web page can jump to the tidymass shinyapp page.</p>
+<p>Enjoy your metabolomic data analysis process!</p>
+<p><img src="figures/docker.png" /></p>
+<p><img src="figures/docker_target.png" /></p>
 
 </div>
 </div>

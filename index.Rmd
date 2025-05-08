@@ -17,7 +17,7 @@ github-repo: "rstudio/bookdown-demo"
 
 [Tidymass shinyapp](https://github.com/tidymass/tidymass_shiny){target="_blank"} is a user-friendly web application for [Tidymass](https://www.tidymass.org/){target="_blank"} that requires little or no programming experience.
 
-The app can only be installed via code now, and we will introduce how to do that step by step in this chapter.
+The app can be installed via code, docker and server, and we will introduce how to do that step by step in this chapter.
 
 ## Install R and Rstudio
 
@@ -110,6 +110,75 @@ You should be able to see:
 
 ![](figures/shinyapp.png)
 
+## Install docker version
+
+[Docker](https://www.docker.com/){target="_blank"}, a group of platform as a service (PaaS) products, uses OS-level virtualization to provide software in containers. It's useful for individuals who want to share the code, data, and analysis environment with others to repeat their analysis and results.
+
+We provide a docker version of tidymass shinyapp, all the packages in tidymass shinyapp and the dependent packages have been installed.
+
+**Install docker**
+
+You can refer the the [official website](https://www.docker.com/get-started){target="_blank"} to download the docker. Then run docker.
+
+**Pull the tidymassshiny image**
+
+Open your terminal (on Windows, use Command Prompt, PowerShell, or Windows Terminal) and type the following command:
+
+```{r, eval=FALSE}
+docker pull tidymass/tidymassshiny:latest
+```
+
+**Get the path of the demo data**
+
+Since the Shiny app utilizes `shinyFiles` to obtain file or folder paths, you need to mount your **working directory** into the Docker image when running the Docker version of `tidymassshiny`. Here are instructions.
+
+For macOS systems,  you can get the path for the demo data from `Get Info`, the path may look like `/Users/yijiang/Desktop/Demo_data`. For Windows OS, the path may look like `C:\Users\Yijiang\Documents`. Here you need to copy **Your Own Path**.
+
+![](figures/path.png)
+
+**Ensure Docker Desktop has permission to demo data**
+
+Ensure Docker Desktop has permission to access the drive containing your working directory:
+
+  1. Open **Docker Desktop**.
+  2. Go to **Settings > Resources > File Sharing**.
+  3. Add the drive or folder (e.g., `/Users/yijiang/Desktop/Demo_data`) to the shared folders list.
+  4. Click **Apply & Restart**.
+
+![](figures/docker_set.png)
+
+Please make sure the demo file has the required permissions before proceeding to the next steps. Here are some guidance for [Mac](https://support.apple.com/en-sg/guide/mac-help/mchlp1203/mac){target="_blank"} and [Windows](https://answers.microsoft.com/en-us/windows/forum/all/give-permissions-to-files-and-folders-in-windows/78ee562c-a21f-4a32-8691-73aac1415373){target="_blank"}.
+
+Here replace `/Users/yijiang/Desktop/Demo_data` with **your own path** that you just give permission to the Docker Desktop.
+
+```{r, eval=FALSE}
+docker run -p 3838:3838 -v /Users/yijiang/Desktop/Demo_data:/home tidymass/tidymassshiny:latest
+```
+
+This command achieves two purposes:
+- Starts the Docker image.
+- Mounts your working directory to the `/home` path within the container.
+
+**Running the Application**
+
+In terminal, a series of R package loading information will be printed. Until you see the prompt below, tidymassshiny has been successfully running：
+
+```{r, eval=FALSE}
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+...
+...
+...
+## Until this message show up.
+Listening on http://0.0.0.0:3838
+```
+
+Then open the browser (Google，Firefox，Edge or Safari), paste the address `http://localhost:3838` in the address bar, and the web page can jump to the tidymass shinyapp page. 
+
+Enjoy your metabolomic data analysis process!
+
+![](figures/docker.png)
+
+![](figures/docker_target.png)
 
 
 
