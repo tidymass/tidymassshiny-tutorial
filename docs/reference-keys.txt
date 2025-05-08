@@ -3,6 +3,7 @@ install-r-and-rstudio
 for-mac-user-install-cario
 install-tidymass-shinyapp
 install-docker-version
+install-server-version
 upstream-data-processing
 data-format-converter
 project-initiate

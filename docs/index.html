@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#for-mac-user-install-cario"><i class="fa fa-check"></i><b>1.2</b> (For Mac User) Install Cario</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#install-tidymass-shinyapp"><i class="fa fa-check"></i><b>1.3</b> Install Tidymass shinyapp</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#install-docker-version"><i class="fa fa-check"></i><b>1.4</b> Install docker version</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#install-server-version"><i class="fa fa-check"></i><b>1.5</b> Install server version</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="upstream-data-processing.html"><a href="upstream-data-processing.html"><i class="fa fa-check"></i><b>2</b> Upstream data processing</a>
 <ul>
@@ -277,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p><img src="figures/docker_set.png" /></p>
 <p>Please make sure the demo file has the required permissions before proceeding to the next steps. Here are some guidance for <a href="https://support.apple.com/en-sg/guide/mac-help/mchlp1203/mac" target="_blank">Mac</a> and <a href="https://answers.microsoft.com/en-us/windows/forum/all/give-permissions-to-files-and-folders-in-windows/78ee562c-a21f-4a32-8691-73aac1415373" target="_blank">Windows</a>.</p>
-<p>Here replace <code>/Users/yijiang/Desktop/Demo_data</code> with <strong>your own path</strong> that you just give permission to the Docker Desktop.</p>
+<p>Here replace <code>/Users/yijiang/Desktop/Demo_data</code> with <strong>your own path</strong> that you just give permission to the Docker Desktop. Then run the code:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a>docker run <span class="sc">-</span>p <span class="dv">3838</span><span class="sc">:</span><span class="dv">3838</span> <span class="sc">-</span>v <span class="sc">/</span>Users<span class="sc">/</span>yijiang<span class="sc">/</span>Desktop<span class="sc">/</span>Demo_data<span class="sc">:</span><span class="er">/</span>home tidymass<span class="sc">/</span>tidymassshiny<span class="sc">:</span>latest</span></code></pre></div>
 <p>This command achieves two purposes:
 - Starts the Docker image.
@@ -294,6 +295,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Enjoy your metabolomic data analysis process!</p>
 <p><img src="figures/docker.png" /></p>
 <p><img src="figures/docker_target.png" /></p>
+</div>
+<div id="install-server-version" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Install server version<a href="index.html#install-server-version" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To better handle large-scale metabolite data analysis, tidymass_shiny can be deployed on high-performance servers.</p>
+<p>This guide walks you through deploying tidymass_shiny on <code>Ubuntu 20.04 LTS</code> server</p>
+<p><strong>Step 1: Install Required System Libraries</strong></p>
+<p>Ensure the system has the necessary libraries for R package compilation and Shiny functionality. These libraries are critical for graphics, networking, and data processing.</p>
+<p>-<strong>Update package lists</strong>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" tabindex="-1"></a>sudo apt update</span></code></pre></div>
+<ul>
+<li><strong>Install the libraries</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a>sudo apt install <span class="sc">-</span>y gfortran libcurl4<span class="sc">-</span>openssl<span class="sc">-</span>dev libssh2<span class="dv">-1</span><span class="sc">-</span>dev libgit2<span class="sc">-</span>dev libpng<span class="sc">-</span>dev libjpeg<span class="sc">-</span>dev libtiff<span class="sc">-</span>dev libcairo2<span class="sc">-</span>dev libharfbuzz<span class="sc">-</span>dev libfribidi<span class="sc">-</span>dev zlib1g<span class="sc">-</span>dev libbz2<span class="sc">-</span>dev liblzma<span class="sc">-</span>dev libnetcdf<span class="sc">-</span>dev libxml2<span class="sc">-</span>dev libjson<span class="sc">-</span>c<span class="sc">-</span>dev libssl<span class="sc">-</span>dev libfontconfig1<span class="sc">-</span>dev libfreetype6<span class="sc">-</span>dev libicu<span class="sc">-</span>dev libhdf5<span class="sc">-</span>dev</span></code></pre></div>
+<p><strong>Step 2: Create a Shiny User Account</strong></p>
+<p>To isolate the Shiny application and manage permissions effectively, create a dedicated user.</p>
+<ul>
+<li><strong>Create the <code>shiny</code> user</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" tabindex="-1"></a>sudo adduser shiny</span></code></pre></div>
+<ul>
+<li><strong>Switch to the <code>shiny</code> user</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" tabindex="-1"></a>su <span class="sc">-</span> shiny</span></code></pre></div>
+<p><strong>Step 3: Install R</strong></p>
+<p>Install the latest version of R from the CRAN repository.</p>
+<p>-<strong>Add the CRAN repository</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" tabindex="-1"></a>sudo apt<span class="sc">-</span>key adv <span class="sc">--</span>keyserver keyserver.ubuntu.com <span class="sc">--</span>recv<span class="sc">-</span>keys E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+<span id="cb14-2"><a href="index.html#cb14-2" tabindex="-1"></a>sudo add<span class="sc">-</span>apt<span class="sc">-</span>repository <span class="st">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&#39;</span></span></code></pre></div>
+<p>-<strong>Update and install R</strong>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" tabindex="-1"></a>sudo apt update</span>
+<span id="cb15-2"><a href="index.html#cb15-2" tabindex="-1"></a>sudo apt install <span class="sc">-</span>y r<span class="sc">-</span>base r<span class="sc">-</span>base<span class="sc">-</span>dev</span></code></pre></div>
+<p><strong>Step 4: Install Shiny Server</strong></p>
+<p>Shiny Server hosts and serves your Shiny application.</p>
+<p>-<strong>Install <code>gdebi</code> to handle <code>.deb</code> files</strong>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" tabindex="-1"></a>sudo apt install <span class="sc">-</span>y gdebi<span class="sc">-</span>core</span></code></pre></div>
+<p>-<strong>Download and install Shiny Server</strong> (verify the latest version at <a href="https://posit.co/download/shiny-server/" target="_blank">Shiny Server’s official site</a>):</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" tabindex="-1"></a>wget https<span class="sc">:</span><span class="er">//</span>download3.rstudio.org<span class="sc">/</span>ubuntu<span class="fl">-18.04</span><span class="sc">/</span>x86_64<span class="sc">/</span>shiny<span class="sc">-</span>server<span class="dv">-1</span>.<span class="dv">5</span>.<span class="fl">17.973</span><span class="sc">-</span>amd64.deb</span>
+<span id="cb17-2"><a href="index.html#cb17-2" tabindex="-1"></a>sudo gdebi shiny<span class="sc">-</span>server<span class="dv">-1</span>.<span class="dv">5</span>.<span class="fl">17.973</span><span class="sc">-</span>amd64.deb</span></code></pre></div>
+<p>-<strong>Start and enable Shiny Server</strong>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" tabindex="-1"></a>sudo systemctl start shiny<span class="sc">-</span>server</span>
+<span id="cb18-2"><a href="index.html#cb18-2" tabindex="-1"></a>sudo systemctl enable shiny<span class="sc">-</span>server</span></code></pre></div>
+<p><strong>Step 5: Set Up the Shiny Application Directory</strong></p>
+<p>Create a directory to store your Shiny application.</p>
+<p>-<strong>Create the directory</strong> :</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" tabindex="-1"></a>sudo mkdir <span class="sc">/</span>srv<span class="sc">/</span>shiny<span class="sc">-</span>server<span class="sc">/</span>tidymass_shiny</span></code></pre></div>
+<p>-<strong>Set ownership to the <code>shiny</code> user</strong>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" tabindex="-1"></a>sudo chown <span class="sc">-</span>R shiny<span class="sc">:</span>shiny <span class="sc">/</span>srv<span class="sc">/</span>shiny<span class="sc">-</span>server<span class="sc">/</span>tidymass_shiny</span></code></pre></div>
+<p><strong>Step 6: Install Required R Packages</strong></p>
+<p>Install the R packages needed for your Shiny application.</p>
+<p>-<strong>Start R</strong>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" tabindex="-1"></a>R</span></code></pre></div>
+<ul>
+<li>**For Chinese users:</li>
+<li><strong>Set package mirrors</strong> (optional, for faster downloads):</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&#39;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;</span>))</span>
+<span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">BioC_mirror =</span> <span class="st">&#39;https://mirrors.westlake.edu.cn/bioconductor&#39;</span>)</span></code></pre></div>
+<p>-<strong>Install essential packages</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;writexl&#39;</span>, <span class="st">&#39;hexbin&#39;</span>, <span class="st">&#39;ComplexUpset&#39;</span>, <span class="st">&#39;shinyalert&#39;</span>, <span class="st">&#39;shiny&#39;</span>, <span class="st">&#39;bsicons&#39;</span>, <span class="st">&#39;bslib&#39;</span>, <span class="st">&#39;plotly&#39;</span>, <span class="st">&#39;colourpicker&#39;</span>,<span class="st">&#39;BiocManager&#39;</span>，<span class="st">&#39;devtools&#39;</span>)</span>
+<span id="cb23-2"><a href="index.html#cb23-2" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&#39;preprocessCore&#39;</span>,<span class="st">&#39;impute&#39;</span>,<span class="st">&#39;mzR&#39;</span>,<span class="st">&#39;MSnbase&#39;</span>,<span class="st">&#39;Rdisop&#39;</span>,<span class="st">&#39;BiocGenerics&#39;</span>,<span class="st">&#39;KEGGREST&#39;</span>,<span class="st">&#39;DelayedArray&#39;</span>,<span class="st">&#39;S4Arrays&#39;</span>,<span class="st">&#39;GenomicRanges&#39;</span>,<span class="st">&#39;multtest&#39;</span>,<span class="st">&#39;MassSpecWavelet&#39;</span>,<span class="st">&#39;xcms&#39;</span>,<span class="st">&#39;Biobase&#39;</span>,<span class="st">&#39;AnnotationFilter&#39;</span>))</span>
+<span id="cb23-3"><a href="index.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="index.html#cb23-4" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/masstools&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/massqc&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/massdataset&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/metid&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/metpath&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/massstat&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/massprocesser&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/massdatabase&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">&#39;tidymass/tidymass&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;thomasp85/shinyFiles&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;dreamRs/shinyWidgets&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/massdbbuildin&#39;</span>) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;tidymass/tidymass_shiny&#39;</span>)</span></code></pre></div>
+<p><strong>Step 7: Deploy the Shiny Application</strong></p>
+<p>Add your Shiny app code to the directory.</p>
+<p>-<strong>Create <code>app.R</code></strong>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a>sudo nano <span class="sc">/</span>srv<span class="sc">/</span>shiny<span class="sc">-</span>server<span class="sc">/</span>my_shiny_app<span class="sc">/</span>app.R</span></code></pre></div>
+<p>-<strong>Add your app code</strong> (example):</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-2"><a href="index.html#cb25-2" tabindex="-1"></a><span class="fu">library</span>(tidymass)</span>
+<span id="cb25-3"><a href="index.html#cb25-3" tabindex="-1"></a><span class="fu">library</span>(tidymassshiny)</span>
+<span id="cb25-4"><a href="index.html#cb25-4" tabindex="-1"></a><span class="fu">run_tidymass_shiny</span>()</span></code></pre></div>
+<p>-<strong>Save and exit</strong> (<code>Ctrl + O</code>, <code>Enter</code>, <code>Ctrl + X</code> in nano).</p>
+<p><strong>Step 8: Restart Shiny Server and Test</strong></p>
+<p>Restart the server and verify your application works.</p>
+<p>-<strong>Restart Shiny Server</strong>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1" tabindex="-1"></a>sudo systemctl restart shiny<span class="sc">-</span>server</span></code></pre></div>
+<p>-<strong>Test the app</strong>:<br />
+Open a browser and go to <code>http://your-server-ip:3838/tidymass_shiny</code>.</p>
+<p><img src="figures/b1.png" /></p>
+<p>**Notice</p>
+<p>It is important to note that <code>tidymass_shiny</code> utilizes the <code>shinyFiles</code> package, which is inherently a local file management system. Theoretically, <code>shinyFiles</code> cannot directly access local files. This means you must first create a working directory under your user account on the server and upload the raw data to be analyzed (e.g., via SFTP) to this server directory before proceeding.</p>
 
 </div>
 </div>

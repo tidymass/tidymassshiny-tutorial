@@ -149,7 +149,7 @@ Ensure Docker Desktop has permission to access the drive containing your working
 
 Please make sure the demo file has the required permissions before proceeding to the next steps. Here are some guidance for [Mac](https://support.apple.com/en-sg/guide/mac-help/mchlp1203/mac){target="_blank"} and [Windows](https://answers.microsoft.com/en-us/windows/forum/all/give-permissions-to-files-and-folders-in-windows/78ee562c-a21f-4a32-8691-73aac1415373){target="_blank"}.
 
-Here replace `/Users/yijiang/Desktop/Demo_data` with **your own path** that you just give permission to the Docker Desktop.
+Here replace `/Users/yijiang/Desktop/Demo_data` with **your own path** that you just give permission to the Docker Desktop. Then run the code:
 
 ```{r, eval=FALSE}
 docker run -p 3838:3838 -v /Users/yijiang/Desktop/Demo_data:/home tidymass/tidymassshiny:latest
@@ -179,6 +179,174 @@ Enjoy your metabolomic data analysis process!
 ![](figures/docker.png)
 
 ![](figures/docker_target.png)
+
+## Install server version
+
+To better handle large-scale metabolite data analysis, tidymass_shiny can be deployed on high-performance servers.
+
+This guide walks you through deploying tidymass_shiny  on `Ubuntu 20.04 LTS` server
+
+**Step 1: Install Required System Libraries**
+
+Ensure the system has the necessary libraries for R package compilation and Shiny functionality. These libraries are critical for graphics, networking, and data processing.
+
+-**Update package lists**:
+
+```{r, eval=FALSE}
+sudo apt update
+```
+
+- **Install the libraries**:
+
+```{r, eval=FALSE}
+sudo apt install -y gfortran libcurl4-openssl-dev libssh2-1-dev libgit2-dev libpng-dev libjpeg-dev libtiff-dev libcairo2-dev libharfbuzz-dev libfribidi-dev zlib1g-dev libbz2-dev liblzma-dev libnetcdf-dev libxml2-dev libjson-c-dev libssl-dev libfontconfig1-dev libfreetype6-dev libicu-dev libhdf5-dev
+```
+
+**Step 2: Create a Shiny User Account**
+
+To isolate the Shiny application and manage permissions effectively, create a dedicated user.
+
+- **Create the `shiny` user**:
+
+```{r, eval=FALSE}
+sudo adduser shiny
+```
+
+- **Switch to the `shiny` user**:
+
+```{r, eval=FALSE}
+su - shiny
+```
+
+**Step 3: Install R**
+
+Install the latest version of R from the CRAN repository.
+
+-**Add the CRAN repository**:
+    
+```{r, eval=FALSE}
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+```
+    
+-**Update and install R**:
+
+```{r, eval=FALSE}
+sudo apt update
+sudo apt install -y r-base r-base-dev
+```
+    
+
+**Step 4: Install Shiny Server**
+
+Shiny Server hosts and serves your Shiny application.
+
+-**Install `gdebi` to handle `.deb` files**:
+
+```{r, eval=FALSE}
+sudo apt install -y gdebi-core
+```    
+
+-**Download and install Shiny Server** (verify the latest version at [Shiny Server's official site](https://posit.co/download/shiny-server/){target="_blank"}):
+
+```{r, eval=FALSE}
+wget https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.17.973-amd64.deb
+sudo gdebi shiny-server-1.5.17.973-amd64.deb
+```        
+    
+-**Start and enable Shiny Server**:
+
+```{r, eval=FALSE}
+sudo systemctl start shiny-server
+sudo systemctl enable shiny-server
+```          
+
+**Step 5: Set Up the Shiny Application Directory**
+
+Create a directory to store your Shiny application.
+
+-**Create the directory** :
+
+```{r, eval=FALSE}
+sudo mkdir /srv/shiny-server/tidymass_shiny
+```              
+
+-**Set ownership to the `shiny` user**:
+
+```{r, eval=FALSE}
+sudo chown -R shiny:shiny /srv/shiny-server/tidymass_shiny
+```        
+
+**Step 6: Install Required R Packages**
+
+Install the R packages needed for your Shiny application.
+
+-**Start R**:
+
+```{r, eval=FALSE}
+R
+```            
+    
+- **For Chinese users: 
+- **Set package mirrors** (optional, for faster downloads):
+
+```{r, eval=FALSE}
+options(repos = c(CRAN = 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/'))
+options(BioC_mirror = 'https://mirrors.westlake.edu.cn/bioconductor')
+```         
+
+-**Install essential packages** 
+
+```{r, eval=FALSE}
+install.packages(c('tidyverse', 'writexl', 'hexbin', 'ComplexUpset', 'shinyalert', 'shiny', 'bsicons', 'bslib', 'plotly', 'colourpicker','BiocManager'，'devtools')
+BiocManager::install(c('preprocessCore','impute','mzR','MSnbase','Rdisop','BiocGenerics','KEGGREST','DelayedArray','S4Arrays','GenomicRanges','multtest','MassSpecWavelet','xcms','Biobase','AnnotationFilter'))
+
+devtools::install_gitlab('tidymass/masstools') devtools::install_gitlab('tidymass/massqc') devtools::install_gitlab('tidymass/massdataset') devtools::install_gitlab('tidymass/metid') devtools::install_gitlab('tidymass/metpath') devtools::install_gitlab('tidymass/massstat') devtools::install_gitlab('tidymass/massprocesser') devtools::install_gitlab('tidymass/massdatabase') devtools::install_gitlab('tidymass/tidymass') devtools::install_github('thomasp85/shinyFiles') devtools::install_github('dreamRs/shinyWidgets') devtools::install_github('tidymass/massdbbuildin') devtools::install_github('tidymass/tidymass_shiny')
+```  
+
+
+**Step 7: Deploy the Shiny Application**
+
+Add your Shiny app code to the directory.
+
+-**Create `app.R`**:
+
+```{r, eval=FALSE}
+sudo nano /srv/shiny-server/my_shiny_app/app.R
+```           
+
+-**Add your app code** (example):
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(tidymass)
+library(tidymassshiny)
+run_tidymass_shiny()
+```      
+
+-**Save and exit** (`Ctrl + O`, `Enter`, `Ctrl + X` in nano).
+
+**Step 8: Restart Shiny Server and Test**
+
+Restart the server and verify your application works.
+
+-**Restart Shiny Server**:
+
+```{r, eval=FALSE}
+sudo systemctl restart shiny-server
+```          
+
+-**Test the app**:  
+    Open a browser and go to `http://your-server-ip:3838/tidymass_shiny`.
+
+![](figures/b1.png)
+
+**Notice
+
+It is important to note that `tidymass_shiny` utilizes the `shinyFiles` package, which is inherently a local file management system. Theoretically, `shinyFiles` cannot directly access local files. This means you must first create a working directory under your user account on the server and upload the raw data to be analyzed (e.g., via SFTP) to this server directory before proceeding.
+
+
+
 
 
 
