@@ -13,15 +13,23 @@ link-citations: true
 github-repo: "rstudio/bookdown-demo"
 ---
 
-# Installation
+# Installation and access instructions
 
 [Tidymass shinyapp](https://github.com/tidymass/tidymass_shiny){target="_blank"} is a user-friendly web application for [Tidymass](https://www.tidymass.org/){target="_blank"} that requires little or no programming experience.
 
-The app can be installed via code, docker and server, and we will introduce how to do that step by step in this chapter.
+We provided online version so that you can simply access it and analysis your data. If you want to process the data locally, we also provide various download options. To be specific, the app can be installed via code, docker and server, and we will introduce how to do that step by step in this chapter.
+
+## Access the online version
+
+To access the online version of Tidymass shinyapp, you can simply click the link: [http://139.224.119.36/tidymass-shiny/](http://139.224.119.36/tidymass-shiny/ ){target="_blank"}
+
+![](figures/online_version.png)
+
+This online version is hosted on a server, and you can use it to analyze your data without any installation. However, please note that the online version may have some limitations in terms of data size and processing speed. For example, the upload file size is restricted to **512MB**.
 
 ## Install R and Rstudio
 
-To begin with, you need to install R and Rstudio, both of which can be free downloaded from official websites.
+You may choose to use the local version of Tidymass shinyapp, which requires you to install R and Rstudio on your computer. This allows you to analyze larger datasets and have more control over the analysis process.
 
 If you have installed them before, please ensure that R version > 4.1 as tidymass required, ohterwise download and install the [latest version of R](https://cran.r-project.org/mirrors.html){target="_blank"}.
 
