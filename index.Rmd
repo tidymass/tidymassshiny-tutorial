@@ -1,5 +1,5 @@
 --- 
-title: "Tutorials for Tidymass shinyapp"
+title: "Tutorials for Tidymass Shinyapp"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography:
@@ -21,11 +21,18 @@ We provided online version so that you can simply access it and analyze your dat
 
 ## Access the online version
 
-To access the online version of Tidymass shinyapp, you can simply click the link: [http://139.224.119.36/tidymass-shiny/](http://139.224.119.36/tidymass-shiny/ ){target="_blank"}
+To access the online version of Tidymass shinyapp, you can simply click the link: [https://tidymassshiny.jaspershenlab.com](https://tidymassshiny.jaspershenlab.com ){target="_blank"}
 
 ![](figures/online_version.png)
 
 This online version is hosted on a server, and you can use it to analyze your data without any installation. However, please note that the online version may have some limitations in terms of data size and processing speed. For example, the upload file size is restricted to **512MB**.
+
+Different from the local version, the results of online version will be stored in the server and will be **deleted after 24 hours**. If you want to save the results, please record the JOB ID and download the results by clicking "**Download All Data**".
+
+![](figures/job_id.png)
+
+![](figures/download_reulst.png)
+
 
 ## Install R and Rstudio
 
