@@ -58,71 +58,6 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -173,10 +108,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html"><i class="fa fa-check"></i><b>4</b> Tidymass shiny Toolkits</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.1</b> Feature-based Pathway Analysis (FPA)</a></li>
-<li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.2</b> Metabolite database construction</a></li>
-<li class="chapter" data-level="4.3" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction"><i class="fa fa-check"></i><b>4.3</b> KEGG Pathway Database Construction</a></li>
-<li class="chapter" data-level="4.4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-id-conversion"><i class="fa fa-check"></i><b>4.4</b> Metabolite ID Conversion</a></li>
+<li class="chapter" data-level="4.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#fmsea-analysis"><i class="fa fa-check"></i><b>4.1</b> fMSEA Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#data-upload"><i class="fa fa-check"></i><b>4.1.1</b> Data Upload</a></li>
+<li class="chapter" data-level="4.1.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#step-1-annotation"><i class="fa fa-check"></i><b>4.1.2</b> Step 1: Annotation</a></li>
+<li class="chapter" data-level="4.1.3" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#step-2-fmsea-analysis"><i class="fa fa-check"></i><b>4.1.3</b> Step 2: fMSEA Analysis</a></li>
+<li class="chapter" data-level="4.1.4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#results-visualization"><i class="fa fa-check"></i><b>4.1.4</b> Results Visualization</a></li>
+<li class="chapter" data-level="4.1.5" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#step-3-llm-evaluation-optional"><i class="fa fa-check"></i><b>4.1.5</b> Step 3: LLM Evaluation (Optional)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa"><i class="fa fa-check"></i><b>4.2</b> Feature-based Pathway Analysis (FPA)</a></li>
+<li class="chapter" data-level="4.3" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-database-construction"><i class="fa fa-check"></i><b>4.3</b> Metabolite database construction</a></li>
+<li class="chapter" data-level="4.4" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction"><i class="fa fa-check"></i><b>4.4</b> KEGG Pathway Database Construction</a></li>
+<li class="chapter" data-level="4.5" data-path="tidymass-shiny-toolkits.html"><a href="tidymass-shiny-toolkits.html#metabolite-id-conversion"><i class="fa fa-check"></i><b>4.5</b> Metabolite ID Conversion</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -200,12 +143,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tidymass-shiny-toolkits" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Tidymass shiny Toolkits<a href="tidymass-shiny-toolkits.html#tidymass-shiny-toolkits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="feature-based-pathway-analysis-fpa" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Feature-based Pathway Analysis (FPA)<a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fmsea-analysis" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> fMSEA Analysis<a href="tidymass-shiny-toolkits.html#fmsea-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Feature-based Metabolite Set Enrichment Analysis (<strong>fMSEA</strong>) is a powerful method for interpreting metabolomics data by identifying enriched metabolic pathways. This module provides a comprehensive workflow from metabolite annotation to pathway enrichment analysis, with optional LLM-powered evaluation for enhanced biological interpretation.</p>
+<p>We have developped featureMSEA, a R package to perform fMSEA analysis, and the shinyapp is built based on this package and has been integrated into tidymass shiny.</p>
+<p>To use the shinyapp of FMSEA, you need to launch the tidymass shiny and click the <strong>fMSEA Analysis</strong> module under the <strong>Tidymass shiny toolkits</strong> dropdown menu.</p>
+<p><img src="figures/fmsea_start.png" /></p>
+<div id="data-upload" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Data Upload<a href="tidymass-shiny-toolkits.html#data-upload" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To begin fMSEA analysis, you need to prepare the following data files in <strong>.rda</strong> format. Click the respective buttons to select your files; the file paths will be displayed once successfully loaded.</p>
+<p><strong>Required Files:</strong></p>
+<ul>
+<li><strong>Feature Table</strong>: A processed feature table containing your metabolomics data.</li>
+<li><strong>MS1 Database</strong>: A metabolite database for MS1 annotation (Support for KEGG and HMDB).</li>
+<li><strong>Pathway Database</strong>: A pathway database (Support 5 public databases: KEGG, HMDB, IMETPD, Reactome and Wikipathway).</li>
+</ul>
+<p><strong>Optional Files:</strong></p>
+<ul>
+<li><strong>Existing Results</strong>: Previously saved fMSEA results for continuing a previous analysis.</li>
+</ul>
+<p>Demo data can be downloaded through <a href="https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link" target="_blank">Google Drive</a>.</p>
+<p><img src="figures/fmsea_inputs.png" /></p>
+<p>You can upload these files by clicking the buttoms and selecting these files.</p>
+<p><img src="figures/files_upload.png" /></p>
+<p>Alternatively, you can also upload the fmsea results object file if you have performed the analysis. In this way, you can skip <strong>Step 1</strong> and <strong>Step 2</strong>.</p>
+<p><img src="figures/results_upload.png" /></p>
+<hr />
+</div>
+<div id="step-1-annotation" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Step 1: Annotation<a href="tidymass-shiny-toolkits.html#step-1-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first step performs metabolite annotation using the provided MS1 database. This process matches the features to known metabolites based on m/z.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong>Column</strong>: Chromatographic column type. Options: <code>"rp"</code> (reverse phase), <code>"hilic"</code>. Default is <code>"rp"</code>.</li>
+<li><strong>DB Type</strong>: Database type used for annotation. Options: <code>"KEGG"</code>, <code>"HMDB"</code>. Default is <code>"KEGG"</code>.</li>
+<li><strong>MS1 PPM</strong>: Mass accuracy threshold for MS1 matching in parts per million (ppm). Default is <code>15</code>.</li>
+<li><strong>RT Tol (s)</strong>: Retention time tolerance for mfc clustering. Default is <code>10</code>.</li>
+<li><strong>Isotope No.</strong>: Maximum number of isotopes to consider. Default is <code>3</code>.</li>
+</ul>
+<p>Once you have set the parameters, click <strong>Run Step 1</strong> to perform the annotation.</p>
+<blockquote>
+<p><strong>Note</strong>: The analysis may take a long time, please be patient.</p>
+</blockquote>
+<p><img src="figures/fmsea_step1.png" /></p>
+<hr />
+</div>
+<div id="step-2-fmsea-analysis" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Step 2: fMSEA Analysis<a href="tidymass-shiny-toolkits.html#step-2-fmsea-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The second step performs the actual pathway enrichment analysis using the annotated metabolites generated in Step 1.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong>Threads</strong>: Number of threads for parallel processing. Default is <code>3</code>.</li>
+<li><strong>Min Compounds</strong>: Minimum number of compounds required in a pathway. Default is <code>15</code>.</li>
+<li><strong>Max Compounds</strong>: Maximum number of compounds allowed in a pathway. Default is <code>300</code>.</li>
+<li><strong>Permutations</strong>: Number of permutations for statistical testing. Default is <code>1000</code>.</li>
+<li><strong>Max Iterations</strong>: Maximum number of iterations for the algorithm. Default is <code>1</code>.</li>
+<li><strong>FDR Thr</strong>: False Discovery Rate threshold for significance. Default is <code>0.05</code>.</li>
+</ul>
+<p>Click <strong>Run Step 2</strong> to perform the fMSEA analysis.</p>
+<blockquote>
+<p><strong>Note</strong>: The analysis may take several minutes depending on your data size and the number of permutations selected.</p>
+</blockquote>
+<p><img src="figures/fmsea_step2.png" /></p>
+</div>
+<div id="results-visualization" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Results Visualization<a href="tidymass-shiny-toolkits.html#results-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The analysis results are displayed in an interactive interface:</p>
+<ul>
+<li><strong>Significant Modules Table</strong>: Lists all significantly enriched pathways with statistics. Click on any row to visualize the corresponding enrichment plot.</li>
+<li><strong>Enrichment Plot</strong>: Displays the enrichment score (ES) profile for the selected pathway.</li>
+</ul>
+<p><img src="figures/fmsea_visulization.png" /></p>
+<hr />
+</div>
+<div id="step-3-llm-evaluation-optional" class="section level3 hasAnchor" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Step 3: LLM Evaluation (Optional)<a href="tidymass-shiny-toolkits.html#step-3-llm-evaluation-optional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This step provides AI-powered evaluation of the enriched pathways using Large Language Models (LLMs) to offer two types of biological validation:</p>
+<div id="matrix-relevance-analysis" class="section level4 hasAnchor" number="4.1.5.1">
+<h4><span class="header-section-number">4.1.5.1</span> 1. Matrix Relevance Analysis<a href="tidymass-shiny-toolkits.html#matrix-relevance-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Sample Source</strong>: Define the biological matrix (e.g., “urine”, “plasma”, “serum”, “blood”, “feces”).</li>
+<li><strong>Function</strong>: Evaluates how reliably metabolites in the specified matrix indicate pathway activity.</li>
+</ul>
+</div>
+<div id="literature-relevance-analysis" class="section level4 hasAnchor" number="4.1.5.2">
+<h4><span class="header-section-number">4.1.5.2</span> 2. Literature Relevance Analysis<a href="tidymass-shiny-toolkits.html#literature-relevance-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Research Topic</strong>: Define your research focus (e.g., “cancer”, “diabetes”, “pregnancy”).</li>
+<li><strong>Function</strong>: Searches PubMed literature and provides confidence scores for pathway relevance to your specific topic.</li>
+</ul>
+<p><strong>API Configuration:</strong></p>
+<ul>
+<li><strong>API Provider</strong>: Choose between “SiliconFlow (Qwen)” or “OpenAI (GPT)”. Default is <strong>SiliconFlow</strong>.</li>
+<li><strong>API Key</strong>: Enter your valid API key for the selected provider.</li>
+</ul>
+<p>Check the boxes to select which analyses to run (both are enabled by default), then click <strong>Run LLM Evaluation</strong>.</p>
+<p><img src="figures/fmsea_llm.png" /></p>
+<hr />
+<p><strong>Download Options:</strong></p>
+<ul>
+<li>Download pathway tables in <strong>CSV</strong> format.</li>
+<li>Download enrichment plots as <strong>PNG</strong> or <strong>PDF</strong>.</li>
+<li>Download complete <strong>LLM evaluation</strong> results.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="feature-based-pathway-analysis-fpa" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Feature-based Pathway Analysis (FPA)<a href="tidymass-shiny-toolkits.html#feature-based-pathway-analysis-fpa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The metabolic feature-based functional module analysis approach can significantly expands biological interpretation beyond MS2 spectra-based annotated metabolites. You may refer to <a href="https://www.tidymass.org/docs/" target="_blank">Tidymass Website</a> for detailed documentation.</p>
 </div>
-<div id="metabolite-database-construction" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Metabolite database construction<a href="tidymass-shiny-toolkits.html#metabolite-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="metabolite-database-construction" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Metabolite database construction<a href="tidymass-shiny-toolkits.html#metabolite-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using the <a href="https://metid.tidymass.org/" target="_blank">MetID</a> package.</p>
 <p>There are no specific requirements on how to run the LC/MS data for users. As the in-house database construction in metid is used for users to get the in-house databases for themselves (including m/z, retention time and MS/MS spectra of metabolites, for level 1 annotation (Sumner et al., 2007)), so the users just need to run the standards using the same column, LC-gradient, and MS settings with their real samples in the lab</p>
 <p><strong>Data preparation</strong></p>
@@ -247,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="figures/4.png" />
 <img src="figures/5.png" /></p>
 </div>
-<div id="kegg-pathway-database-construction" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> KEGG Pathway Database Construction<a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="kegg-pathway-database-construction" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> KEGG Pathway Database Construction<a href="tidymass-shiny-toolkits.html#kegg-pathway-database-construction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When the research subject is not human, constructing a species-specific KEGG pathway database becomes essential for conducting enrichment analysis. The KEGG database contains comprehensive metabolic pathway data for various organisms, including 1,169 eukaryotes, 9,208 bacteria, and 449 archaea (refer to <a href="https://www.genome.jp/kegg/tables/br08606.html" target="_blank">KEGG Organisms List</a>). Researchers should first identify their target species’ organism code (e.g., <code>hsa</code> for <em>Homo sapiens</em>, <code>mmu</code> for <em>Mus musculus</em>, <code>ath</code> for <em>Arabidopsis thaliana</em>) from this resource.</p>
 <p>The tidymass shiny provides a dedicated module for constructing species-specific pathway databases using these organism codes. The generated pathway database can subsequently be applied to metabolite KEGG pathway enrichment analysis through either the tidymass shiny interface or tidymass R programming.</p>
 <p><strong>Operational Workflow</strong></p>
@@ -294,8 +343,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the annotation results, you will find that Pathway IDs adopt the organism code (e.g., dme) from your custom database as their prefix. This confirms that your provided database was successfully utilized during the KEGG enrichment analysis.</p>
 <p><img src="figures/a4.png" /></p>
 </div>
-<div id="metabolite-id-conversion" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Metabolite ID Conversion<a href="tidymass-shiny-toolkits.html#metabolite-id-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="metabolite-id-conversion" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Metabolite ID Conversion<a href="tidymass-shiny-toolkits.html#metabolite-id-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Metabolites often possess distinct identifiers across analytical databases, necessitating cross-platform ID translation. Tidymass Shiny offers integrated solutions for this purpose:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Established Services</strong></p>

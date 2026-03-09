@@ -23,3 +23,12 @@ feature-based-pathway-analysis-fpa
 metabolite-database-construction
 kegg-pathway-database-construction
 metabolite-id-conversion
+fmsea-analysis
+data-upload
+step-1-annotation
+step-2-fmsea
+step-3-llm-evaluation-optional
+matrix-relevance-analysis
+literature-relevance-analysis
+results-visualization
+step-2-fmsea-analysis

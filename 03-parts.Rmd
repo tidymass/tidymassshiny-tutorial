@@ -1,5 +1,125 @@
 # Tidymass shiny Toolkits
 
+## fMSEA Analysis
+
+Feature-based Metabolite Set Enrichment Analysis (**fMSEA**) is a powerful method for interpreting metabolomics data by identifying enriched metabolic pathways. This module provides a comprehensive workflow from metabolite annotation to pathway enrichment analysis, with optional LLM-powered evaluation for enhanced biological interpretation.
+
+We have developped featureMSEA, a R package to perform fMSEA analysis, and the shinyapp is built based on this package and has been integrated into tidymass shiny. 
+
+To use the shinyapp of FMSEA, you need to launch the tidymass shiny and click the **fMSEA Analysis** module under the **Tidymass shiny toolkits** dropdown menu.
+
+![](figures/fmsea_start.png)
+
+### Data Upload
+
+To begin fMSEA analysis, you need to prepare the following data files in **.rda** format. Click the respective buttons to select your files; the file paths will be displayed once successfully loaded.
+
+**Required Files:**
+
+* **Feature Table**: A processed feature table containing your metabolomics data.
+* **MS1 Database**: A metabolite database for MS1 annotation (Support for KEGG and HMDB).
+* **Pathway Database**: A pathway database (Support 5 public databases: KEGG, HMDB, IMETPD, Reactome and Wikipathway).
+
+**Optional Files:**
+
+* **Existing Results**: Previously saved fMSEA results for continuing a previous analysis.
+
+Demo data can be downloaded through [Google Drive](https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link){target="_blank"}.
+
+![](figures/fmsea_inputs.png)
+
+You can upload these files by clicking the buttoms and selecting these files.
+
+![](figures/files_upload.png)
+
+Alternatively, you can also upload the fmsea results object file if you have performed the analysis. In this way, you can skip **Step 1** and **Step 2**.
+
+![](figures/results_upload.png)
+
+
+---
+
+### Step 1: Annotation
+
+The first step performs metabolite annotation using the provided MS1 database. This process matches the features to known metabolites based on m/z.
+
+**Parameters:**
+
+* **Column**: Chromatographic column type. Options: `"rp"` (reverse phase), `"hilic"`. Default is `"rp"`.
+* **DB Type**: Database type used for annotation. Options: `"KEGG"`, `"HMDB"`. Default is `"KEGG"`.
+* **MS1 PPM**: Mass accuracy threshold for MS1 matching in parts per million (ppm). Default is `15`.
+* **RT Tol (s)**: Retention time tolerance for mfc clustering. Default is `10`.
+* **Isotope No.**: Maximum number of isotopes to consider. Default is `3`.
+
+Once you have set the parameters, click **Run Step 1** to perform the annotation.
+
+> **Note**: The analysis may take a long time, please be patient.
+
+![](figures/fmsea_step1.png)
+
+---
+
+### Step 2: fMSEA Analysis
+
+The second step performs the actual pathway enrichment analysis using the annotated metabolites generated in Step 1.
+
+**Parameters:**
+
+* **Threads**: Number of threads for parallel processing. Default is `3`.
+* **Min Compounds**: Minimum number of compounds required in a pathway. Default is `15`.
+* **Max Compounds**: Maximum number of compounds allowed in a pathway. Default is `300`.
+* **Permutations**: Number of permutations for statistical testing. Default is `1000`.
+* **Max Iterations**: Maximum number of iterations for the algorithm. Default is `1`.
+* **FDR Thr**: False Discovery Rate threshold for significance. Default is `0.05`.
+
+Click **Run Step 2** to perform the fMSEA analysis. 
+
+> **Note**: The analysis may take several minutes depending on your data size and the number of permutations selected.
+
+![](figures/fmsea_step2.png)
+
+### Results Visualization
+
+The analysis results are displayed in an interactive interface:
+
+* **Significant Modules Table**: Lists all significantly enriched pathways with statistics. Click on any row to visualize the corresponding enrichment plot.
+* **Enrichment Plot**: Displays the enrichment score (ES) profile for the selected pathway.
+
+
+![](figures/fmsea_visulization.png)
+
+---
+
+### Step 3: LLM Evaluation (Optional)
+
+This step provides AI-powered evaluation of the enriched pathways using Large Language Models (LLMs) to offer two types of biological validation:
+
+#### 1. Matrix Relevance Analysis
+* **Sample Source**: Define the biological matrix (e.g., "urine", "plasma", "serum", "blood", "feces").
+* **Function**: Evaluates how reliably metabolites in the specified matrix indicate pathway activity.
+
+#### 2. Literature Relevance Analysis
+* **Research Topic**: Define your research focus (e.g., "cancer", "diabetes", "pregnancy").
+* **Function**: Searches PubMed literature and provides confidence scores for pathway relevance to your specific topic.
+
+**API Configuration:**
+
+* **API Provider**: Choose between "SiliconFlow (Qwen)" or "OpenAI (GPT)". Default is **SiliconFlow**.
+* **API Key**: Enter your valid API key for the selected provider.
+
+Check the boxes to select which analyses to run (both are enabled by default), then click **Run LLM Evaluation**.
+
+![](figures/fmsea_llm.png)
+
+---
+
+**Download Options:**
+
+* Download pathway tables in **CSV** format.
+* Download enrichment plots as **PNG** or **PDF**.
+* Download complete **LLM evaluation** results.
+
+
 ## Feature-based Pathway Analysis (FPA)
 
 The metabolic feature-based functional module analysis approach can significantly expands biological interpretation beyond MS2 spectra-based annotated metabolites. You may refer to [Tidymass Website](https://www.tidymass.org/docs/){target="_blank"} for detailed documentation.
